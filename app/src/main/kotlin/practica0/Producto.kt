@@ -12,3 +12,10 @@ class Producto(
     var estado: Estado = Estado.ACTIVO
 
 )
+
+class Categoria(
+    var nombre: String,
+    var estado: Estado = Estado.ACTIVO,
+    var img: String,
+    var productos: ArrayList<Producto> = ArrayList()
+)

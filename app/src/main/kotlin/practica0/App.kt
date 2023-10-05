@@ -4,10 +4,8 @@
 package practica0
 
 class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
+
+
 }
 
 fun main() {
@@ -20,5 +18,36 @@ fun main() {
 
     productos.add(Producto("Portatil 14",654f
     ,"ptt.jpeg","portatil de 8gb pequeño",Estado.ACTIVO))
+
+    val portatiles = Categoria("Portátiles", Estado.ACTIVO, "imagen_portatil.jpg")
+    portatiles.productos.add(
+        Producto("Lisa", 100f, "lisa.jpg", "Uno de los primeros ordenadores de Apple")
+    )
+    portatiles.productos.add(
+        Producto("IBMPC", 50f, "ibmpc.jpg", "El primer equipo para el gran público")
+    )
+
+    val impresoras = Categoria("Impresoras", Estado.ACTIVO, "imagen_impresora.jpg")
+    impresoras.productos.add(
+        Producto("Brother Colo1234", 10f, "brother.jpg", "Impresora a color")
+    )
+    impresoras.productos.add(
+        Producto("HP Laser", 20f, "hplaser.jpg", "Impresora laser")
+    )
+
+    // Agregar categorías al HashMap
+    val categorias: HashMap<String, ArrayList<Producto>> = hashMapOf(
+        "Portátiles" to portatiles.productos,
+        "Impresoras" to impresoras.productos
+    )
+
+    // Imprimir categorías y productos usando lambda
+    categorias.forEach { (categoria, productos) ->
+        println("Categoría: $categoria")
+        productos.forEach { producto ->
+            println("  Producto: ${producto.nombre}, Precio: ${producto.precio}€")
+        }
+    }
+
 }
 
