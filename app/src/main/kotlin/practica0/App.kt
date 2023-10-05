@@ -58,13 +58,19 @@ fun main() {
     categorias.put("Portatiles", portatiles.productos)
     categorias.put("Impresoras", impresoras.productos)
 
-
+    println("\nMuestro las categorias")
     categorias.entries.stream().forEach { (categoria) ->
         println(categoria)
     }
 
-    categorias.values.stream().forEach { (categorias) ->
-        println(categorias.toString())
-    }
-}
+    println("\nMuestro todos los portatiles")
+    categorias["Portatiles"]?.forEach { println(it.nombre) }
 
+
+    val todosLosProductos = categorias.values.flatten()
+    val precioMedia = todosLosProductos.map { it.precio }.average()
+    println("\nPrecio media de los productos: $precioMedia €")
+
+
+
+}
