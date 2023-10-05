@@ -20,6 +20,7 @@ fun main() {
     ,"ptt.jpeg","portatil de 8gb pequeño",Estado.ACTIVO))
 
     var portatiles = Categoria("Portátiles", Estado.ACTIVO, "imagen_portatil.jpg")
+    var impresoras = Categoria("Impresoras", Estado.ACTIVO, "imagen_impresora.jpg")
 
     portatiles.productos.add(
         Producto(
@@ -36,8 +37,6 @@ fun main() {
             "El primer equipo para el gran público")
     )
 
-    var impresoras = Categoria("Impresoras", Estado.ACTIVO, "imagen_impresora.jpg")
-
     impresoras.productos.add(
         Producto(
             "Brother Colo1234",
@@ -53,15 +52,19 @@ fun main() {
             "Impresora laser")
     )
 
-    // Agregar categorías al HashMap
-    var categorias: HashMap<String, ArrayList<Producto>> = hashMapOf(
-        "Portátiles" to portatiles.productos,
-        "Impresoras" to impresoras.productos
-    )
+    // Agregar categorias al HashMap
+    var categorias: HashMap<String, ArrayList<Producto>> = HashMap()
+
+    categorias.put("Portatiles", portatiles.productos)
+    categorias.put("Impresoras", impresoras.productos)
+
 
     categorias.entries.stream().forEach { (categoria) ->
         println(categoria)
     }
 
+    categorias.values.stream().forEach { (categorias) ->
+        println(categorias.toString())
+    }
 }
 
