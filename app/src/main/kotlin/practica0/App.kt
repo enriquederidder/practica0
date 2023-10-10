@@ -72,5 +72,4 @@ fun main() {
     println("\nPrecio media de los productos: $precioMedia €")
 
 
-
 }
